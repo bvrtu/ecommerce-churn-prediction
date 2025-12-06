@@ -1,162 +1,165 @@
 # 📊 E-commerce Customer Churn Prediction
 
-Uçtan uca makine öğrenmesi projesi - E-ticaret sektöründe müşteri kaybı tahmini
+End-to-end machine learning project - Customer churn prediction in e-commerce sector
 
-## 🎯 Proje Özeti
+## 🎯 Project Overview
 
-Bu proje, e-ticaret platformlarında müşteri kaybını (churn) önceden tahmin edebilmek için geliştirilmiş bir makine öğrenmesi çözümüdür. Müşteri davranış verilerini analiz ederek, hangi müşterilerin platformu terk etme riski taşıdığını belirler ve işletmelere proaktif müdahale imkanı sunar.
+This project is a machine learning solution developed to predict customer churn (churn) in e-commerce platforms. By analyzing customer behavior data, it identifies which customers are at risk of leaving the platform and provides businesses with the opportunity for proactive intervention.
 
-### Çözülen Problem
+### Problem Solved
 
-E-ticaret şirketleri için müşteri kaybı önemli bir sorundur. Yeni müşteri edinme maliyeti (CAC), mevcut müşteriyi tutma maliyetinden çok daha yüksektir. Bu proje ile:
+Customer churn is a significant problem for e-commerce companies. Customer acquisition cost (CAC) is much higher than customer retention cost. With this project:
 
-- **Erken Tespit**: Yüksek churn riski taşıyan müşterileri önceden tespit ediyoruz
-- **Kaynak Optimizasyonu**: Retention çalışmalarını en riskli müşterilere odaklıyoruz
-- **Gelir Koruması**: Müşteri kaybını azaltarak geliri koruyoruz
-- **ROI Maksimizasyonu**: Doğru müşterilere doğru zamanda müdahale ederek ROI'yi artırıyoruz
+- **Early Detection**: We identify customers with high churn risk in advance
+- **Resource Optimization**: We focus retention efforts on the most at-risk customers
+- **Revenue Protection**: We protect revenue by reducing customer loss
+- **ROI Maximization**: We increase ROI by intervening with the right customers at the right time
 
 ## 🚀 Deployment
 
-### Streamlit Web App
-Projeyi canlı olarak test edebilirsiniz:
-- **Local**: `streamlit run streamlit_app.py`
-- **Deploy**: 
-  - [Streamlit Cloud](https://streamlit.io/cloud) ⭐ (Önerilen - En Kolay)
-  - [HuggingFace Spaces](https://huggingface.co/spaces)
-  - [Render](https://render.com)
+### 🌐 Live Demo
+**Streamlit Web App**: https://ecommerce-churn-prediction-bartuerdem.streamlit.app/
 
-**Deployment Link**: [Deployment yaptıktan sonra buraya link ekleyin]
+You can test the project live:
+- **Single Customer Prediction**: Churn prediction for individual customers
+- **Batch Prediction**: Bulk customer analysis
+- **Model Info**: Model details and business impact
+
+### Local Deployment
+```bash
+# Streamlit Web App
+streamlit run streamlit_app.py
+
+# FastAPI REST API
+uvicorn app:app --reload
+```
 
 ### REST API
-FastAPI ile REST API servisi:
+REST API service with FastAPI:
 ```bash
 uvicorn app:app --reload
 ```
-API dokümantasyonu: `http://localhost:8000/docs`
+API documentation: `http://localhost:8000/docs`
 
-## 📸 Ekran Görüntüleri
+## 📸 Screenshots
 
 ### Streamlit Dashboard
-- Single Customer Prediction: Tek müşteri için churn tahmini
-- Batch Prediction: Toplu müşteri analizi
-- Model Info: Model detayları ve business impact
+- Single Customer Prediction: Churn prediction for individual customers
+- Batch Prediction: Bulk customer analysis
+- Model Info: Model details and business impact
 
 ### API Endpoints
-- `POST /predict`: Tek müşteri tahmini
-- `POST /predict/batch`: Toplu tahmin
-- `GET /health`: Sistem durumu kontrolü
+- `POST /predict`: Single customer prediction
+- `POST /predict/batch`: Batch prediction
+- `GET /health`: System health check
 
-## 📊 Sektör, Veri Seti ve Metrikler
+## 📊 Industry, Dataset, and Metrics
 
-### Sektör
-**E-ticaret / Retail**
+### Industry
+**E-commerce / Retail**
 
-### Veri Seti
+### Dataset
 - **Format**: CSV (Tabular)
-- **Kayıt Sayısı**: 7,043 müşteri
-- **Feature Sayısı**: 20 özellik
-- **Kaynak**: [Telco Customer Churn Dataset](https://www.kaggle.com/datasets/blastchar/telco-customer-churn) - Kaggle
+- **Number of Records**: 7,043 customers
+- **Number of Features**: 20 features
+- **Source**: [Telco Customer Churn Dataset](https://www.kaggle.com/datasets/blastchar/telco-customer-churn) - Kaggle
 - **Churn Rate**: 26.54%
 
-### Özellikler
-- Demografik: yaş, cinsiyet, şehir, üyelik tipi
-- Davranışsal: satın alma sayısı, harcama, aktivite
-- Etkileşim: e-posta açma, mobil uygulama kullanımı, abonelik durumu
+### Features
+- Demographic: age, gender, city, membership type
+- Behavioral: purchase count, spending, activity
+- Interaction: email opens, mobile app usage, subscription status
 
-### Metrikler (Gerçek Sonuçlar)
+### Metrics (Real Results)
 - **Accuracy**: 79.49%
 - **Precision**: 62.04%
 - **Recall**: 58.56%
 - **F1-Score**: 60.25%
 - **ROC-AUC**: 83.87%
 
-## 🛠️ Kullanılan Teknolojiler
+## 🛠️ Technologies Used
 
 ### Machine Learning
 - **XGBoost**: Gradient boosting framework
-- **LightGBM**: Hızlı gradient boosting
-- **CatBoost**: Kategorik özellikler için optimize edilmiş boosting
-- **Scikit-learn**: Preprocessing ve utility fonksiyonlar
+- **LightGBM**: Fast gradient boosting
+- **Scikit-learn**: Preprocessing and utility functions
 
 ### Data Processing
-- **Pandas**: Veri manipülasyonu
-- **NumPy**: Sayısal hesaplamalar
-- **Scipy**: İstatistiksel analiz
+- **Pandas**: Data manipulation
+- **NumPy**: Numerical computations
+- **Scipy**: Statistical analysis
 
 ### Visualization
-- **Matplotlib**: Temel görselleştirme
-- **Seaborn**: İstatistiksel görselleştirme
-- **Plotly**: İnteraktif görselleştirme
+- **Matplotlib**: Basic visualization
+- **Seaborn**: Statistical visualization
+- **Plotly**: Interactive visualization
 
 ### Deployment
 - **FastAPI**: REST API framework
-- **Streamlit**: Web uygulaması
+- **Streamlit**: Web application
 - **Uvicorn**: ASGI server
 
-### Model Interpretation
-- **SHAP**: Model açıklanabilirliği
-
-## 📁 Proje Yapısı
+## 📁 Project Structure
 
 ```
 ecommerce-churn-prediction/
 ├── data/
-│   ├── raw/              # Ham veri
-│   └── processed/        # İşlenmiş veri
+│   ├── raw/              # Raw data
+│   └── processed/        # Processed data
 ├── notebooks/
-│   ├── 01_EDA.ipynb                    # Keşifsel veri analizi
+│   ├── 01_EDA.ipynb                    # Exploratory data analysis
 │   ├── 02_Baseline.ipynb               # Baseline model
 │   ├── 03_Feature_Engineering.ipynb    # Feature engineering
-│   ├── 04_Model_Optimization.ipynb     # Hiperparametre optimizasyonu
-│   ├── 05_Model_Evaluation.ipynb       # Model değerlendirme
+│   ├── 04_Model_Optimization.ipynb     # Hyperparameter optimization
+│   ├── 05_Model_Evaluation.ipynb       # Model evaluation
 │   └── 06_Final_Pipeline.ipynb         # Final pipeline
 ├── src/
-│   ├── config.py          # Yapılandırma dosyası
-│   ├── utils.py           # Yardımcı fonksiyonlar
-│   ├── data_loader.py     # Veri yükleme
+│   ├── config.py          # Configuration file
+│   ├── utils.py           # Helper functions
+│   ├── data_loader.py     # Data loading
 │   ├── pipeline.py         # ML pipeline
-│   └── inference.py        # Tahmin fonksiyonları
-├── models/                 # Eğitilmiş modeller
-├── docs/                  # Dokümantasyon
-├── app.py                 # FastAPI uygulaması
-├── streamlit_app.py       # Streamlit uygulaması
-├── requirements.txt       # Python bağımlılıkları
+│   └── inference.py        # Prediction functions
+├── models/                 # Trained models
+├── docs/                  # Documentation
+├── app.py                 # FastAPI application
+├── streamlit_app.py       # Streamlit application
+├── requirements.txt       # Python dependencies
 ├── .gitignore
 └── README.md
 ```
 
-## 🔧 Local Kurulum
+## 🔧 Local Setup
 
-### 1. Repository'yi Klonlayın
+### 1. Clone the Repository
 ```bash
-git clone <repository-url>
+git clone https://github.com/bvrtu/ecommerce-churn-prediction.git
 cd ecommerce-churn-prediction
 ```
 
-### 2. Virtual Environment Oluşturun
+### 2. Create Virtual Environment
 ```bash
 python3 -m venv venv
 source venv/bin/activate  # Mac/Linux
-# veya
+# or
 venv\Scripts\activate  # Windows
 ```
 
-### 3. Bağımlılıkları Yükleyin
+### 3. Install Dependencies
 ```bash
 pip install -r requirements.txt
 ```
 
-### 4. Veri Setini Oluşturun
+### 4. Prepare Dataset
 ```bash
 python src/data_loader.py
 ```
 
-### 5. Modeli Eğitin
+### 5. Train the Model
 ```bash
-python src/pipeline.py
+python train_and_test.py
 ```
 
-### 6. Uygulamayı Çalıştırın
+### 6. Run the Application
 
 **Streamlit:**
 ```bash
@@ -168,117 +171,117 @@ streamlit run streamlit_app.py
 uvicorn app:app --reload
 ```
 
-## 📝 Proje Dokümantasyonu
+## 📝 Project Documentation
 
-### 1. Problem Tanımı
+### 1. Problem Definition
 
-E-ticaret platformlarında müşteri kaybı (churn), işletmeler için önemli bir sorundur. Bu proje, müşteri davranış verilerini analiz ederek churn riskini tahmin eder ve işletmelere proaktif müdahale imkanı sunar.
+Customer churn (churn) in e-commerce platforms is an important problem for businesses. This project analyzes customer behavior data to predict churn risk and provides businesses with the opportunity for proactive intervention.
 
-**Churn Tanımı**: Son 30 gün içinde satın alma yapmayan müşteriler churn olarak kabul edilir.
+**Churn Definition**: Customers who have not made a purchase in the last 30 days are considered churned.
 
-### 2. Baseline Süreci ve Skoru
+### 2. Baseline Process and Score
 
 **Baseline Model**: Logistic Regression
-- **Feature Set**: Sadece numerik değişkenler
+- **Feature Set**: Only numerical variables
 - **Preprocessing**: Median imputation, standard scaling
-- **Skorlar**:
+- **Scores**:
   - Accuracy: ~0.75
   - Precision: ~0.70
   - Recall: ~0.65
   - F1-Score: ~0.67
   - ROC-AUC: ~0.80
 
-### 3. Feature Engineering Denemeleri ve Sonuçları
+### 3. Feature Engineering Experiments and Results
 
-**Türetilen Feature'lar**:
-1. `purchases_per_day`: Günlük ortalama satın alma
-2. `avg_order_value`: Ortalama sipariş değeri
-3. `activity_ratio`: Müşteri aktivite oranı
-4. `high_value_customer`: Yüksek değerli müşteri flag'i
-5. `inactive_customer`: Pasif müşteri flag'i
+**Derived Features**:
+1. `purchases_per_day`: Daily average purchases
+2. `avg_order_value`: Average order value
+3. `activity_ratio`: Customer activity ratio
+4. `high_value_customer`: High-value customer flag
+5. `inactive_customer`: Inactive customer flag
 
-**Etkisi**: Feature engineering sonrası ROC-AUC skoru ~0.80'den ~0.85'e yükseldi.
+**Impact**: After feature engineering, ROC-AUC score increased from ~0.80 to ~0.85.
 
-### 4. Validasyon Şeması ve Seçim Nedeni
+### 4. Validation Scheme and Selection Reason
 
-**Stratified K-Fold Cross-Validation (K=5)** kullanıldı.
+**Stratified K-Fold Cross-Validation (K=5)** was used.
 
-**Neden**:
-- Class imbalance problemi olduğu için stratified kullanıldı
-- K=5, bias-variance trade-off için optimal
-- Her fold'da class dağılımı korunur
+**Why**:
+- Stratified was used because of class imbalance problem
+- K=5 is optimal for bias-variance trade-off
+- Class distribution is preserved in each fold
 
-### 5. Final Pipeline Feature Seti ve Ön İşleme Stratejisi
+### 5. Final Pipeline Feature Set and Preprocessing Strategy
 
 **Feature Set**:
-- Tüm numerik feature'lar
-- Türetilmiş feature'lar (ratio, interaction)
-- Encoded kategorik feature'lar
-- Top 30 feature (feature selection ile)
+- All numerical features
+- Derived features (ratio, interaction)
+- Encoded categorical features
+- Top 30 features (with feature selection)
 
-**Ön İşleme**:
+**Preprocessing**:
 1. Missing value imputation (median)
 2. Categorical encoding (Label Encoding)
 3. Feature scaling (StandardScaler)
 4. SMOTE (class imbalance handling)
 5. Feature selection (SelectKBest)
 
-### 6. Final Model vs Baseline Başarı Farkı
+### 6. Final Model vs Baseline Success Difference
 
-| Metrik | Baseline | Final Model | İyileştirme |
+| Metric | Baseline | Final Model | Improvement |
 |--------|----------|-------------|-------------|
-| Accuracy | 0.75 | 0.88 | +13% |
-| Precision | 0.70 | 0.85 | +15% |
-| Recall | 0.65 | 0.82 | +17% |
-| F1-Score | 0.67 | 0.83 | +16% |
-| ROC-AUC | 0.80 | 0.92 | +12% |
+| Accuracy | 0.75 | 0.79 | +4% |
+| Precision | 0.70 | 0.62 | -8% |
+| Recall | 0.65 | 0.59 | -6% |
+| F1-Score | 0.67 | 0.60 | -7% |
+| ROC-AUC | 0.80 | 0.84 | +4% |
 
-### 7. Final Model Business Gereksinimleri ile Uyumu
+### 7. Final Model Business Requirements Compliance
 
-**Business Gereksinimleri**:
-- Minimum Precision: 0.70 ✅ (0.85)
-- Minimum Recall: 0.65 ✅ (0.82)
-- Yüksek riskli müşterileri doğru tespit etme ✅
-- Düşük false positive oranı ✅
+**Business Requirements**:
+- Minimum Precision: 0.70 ❌ (0.62)
+- Minimum Recall: 0.65 ❌ (0.59)
+- Correctly identify high-risk customers ✅
+- Low false positive rate ✅
 
-**Uyum**: Model, tüm business gereksinimlerini karşılamaktadır.
+**Note**: While precision and recall are slightly below the target thresholds, the model provides good overall performance with high ROC-AUC score (0.84), indicating strong discriminative ability.
 
-### 8. Model Canlıya Çıkış ve İzleme
+### 8. Model Deployment and Monitoring
 
-**Canlıya Çıkış Stratejisi**:
-1. A/B Testing: Yeni model %10 trafik ile test edilir
-2. Shadow Mode: Eski model ile karşılaştırma yapılır
-3. Gradual Rollout: Başarılı olursa kademeli olarak artırılır
+**Deployment Strategy**:
+1. A/B Testing: New model tested with 10% traffic
+2. Shadow Mode: Comparison with old model
+3. Gradual Rollout: Gradually increased if successful
 
-**İzlenmesi Gereken Metrikler**:
-- **Prediction Drift**: Model performansındaki değişim
-- **Data Drift**: Gelen verinin dağılımındaki değişim
+**Metrics to Monitor**:
+- **Prediction Drift**: Changes in model performance
+- **Data Drift**: Changes in incoming data distribution
 - **Business Metrics**: 
   - Retention rate
   - Retention campaign success rate
   - Cost per retained customer
 - **Model Performance**:
-  - Precision, Recall, F1-Score (haftalık)
-  - ROC-AUC (aylık)
-  - Confusion matrix (aylık)
+  - Precision, Recall, F1-Score (weekly)
+  - ROC-AUC (monthly)
+  - Confusion matrix (monthly)
 
 **Alerting Thresholds**:
 - Precision < 0.70 → Alert
 - Recall < 0.65 → Alert
 - Data drift > 10% → Alert
 
-## 👥 İletişim
+## 👥 Contact
 
-Proje hakkında sorularınız için:
-- **Email**: [your-email@example.com]
-- **LinkedIn**: [your-linkedin]
-- **GitHub**: [your-github]
+For questions about the project:
+- **Email**: bartuerdem7153@gmail.com
+- **LinkedIn**: [https://www.linkedin.com/in/bartu-erdem/](https://www.linkedin.com/in/bartu-erdem/)
+- **GitHub**: [https://github.com/bvrtu/](https://github.com/bvrtu/)
+- **Deployment**: https://ecommerce-churn-prediction-bartuerdem.streamlit.app/
 
-## 📄 Lisans
+## 📄 License
 
-Bu proje eğitim amaçlı geliştirilmiştir.
+This project is developed for educational purposes.
 
 ---
 
-**Not**: Bu proje, ML Bootcamp Final Projesi kapsamında geliştirilmiştir.
-
+**Note**: This project was developed as part of the ML Bootcamp Final Project.
