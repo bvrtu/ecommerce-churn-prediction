@@ -1,0 +1,99 @@
+═══════════════════════════════════════════════════════════════
+HIZLI TESLİM VE DEPLOYMENT REHBERİ
+═══════════════════════════════════════════════════════════════
+
+ADIM 1: GIT REPOSITORY OLUŞTURUN
+───────────────────────────────────────────────────────────────
+cd /Users/bartu/Desktop/ecommerce-churn-prediction
+
+git init
+git add .
+git commit -m "Complete E-commerce Churn Prediction project"
+
+ADIM 2: GITHUB'A PUSH EDİN
+───────────────────────────────────────────────────────────────
+1. GitHub'da yeni repository oluşturun:
+   https://github.com/new
+   - Repository name: ecommerce-churn-prediction
+   - Public veya Private seçin
+
+2. Terminal'de:
+git remote add origin https://github.com/YOUR_USERNAME/ecommerce-churn-prediction.git
+git branch -M main
+git push -u origin main
+
+ADIM 3: MODEL DOSYASINI EKLEYİN
+───────────────────────────────────────────────────────────────
+# .gitignore'da models/*.pkl satırını yorum satırı yaptık
+# Şimdi model dosyasını ekleyin:
+
+git add models/final_pipeline.pkl
+git commit -m "Add trained model"
+git push
+
+ADIM 4: STREAMLIT CLOUD'DA DEPLOY EDİN
+───────────────────────────────────────────────────────────────
+1. https://streamlit.io/cloud adresine gidin
+2. GitHub ile giriş yapın
+3. "New app" butonuna tıklayın
+4. Repository: YOUR_USERNAME/ecommerce-churn-prediction seçin
+5. Branch: main
+6. Main file path: streamlit_app.py
+7. "Deploy!" butonuna tıklayın
+8. 2-3 dakika bekleyin
+9. Deployment linkinizi alın
+
+ADIM 5: README'Yİ GÜNCELLEYİN
+───────────────────────────────────────────────────────────────
+README.md dosyasına deployment linkinizi ekleyin:
+- Deployment linki
+- Ekran görüntüleri (opsiyonel)
+- Gerçek model performans metrikleri
+
+ADIM 6: PROJE TESLİM FORMU
+───────────────────────────────────────────────────────────────
+1. Form linki: https://forms.gle/UEQuUJinWjdu32kM8
+2. Son teslim: 9.12.2025
+3. Formu doldurun:
+   - GitHub repository linki
+   - Deployment linki
+   - Proje açıklaması
+   - Model performans metrikleri
+
+═══════════════════════════════════════════════════════════════
+HIZLI KOMUTLAR (KOPYALA-YAPIŞTIR)
+═══════════════════════════════════════════════════════════════
+
+# 1. Git repository hazırla
+cd /Users/bartu/Desktop/ecommerce-churn-prediction
+git init
+git add .
+git commit -m "Complete E-commerce Churn Prediction project"
+
+# 2. GitHub'a push (YOUR_USERNAME'i değiştirin)
+git remote add origin https://github.com/YOUR_USERNAME/ecommerce-churn-prediction.git
+git branch -M main
+git push -u origin main
+
+# 3. Model dosyasını ekle
+git add models/final_pipeline.pkl
+git commit -m "Add trained model"
+git push
+
+# 4. Streamlit Cloud'da deploy et
+# https://streamlit.io/cloud adresine git ve deploy et
+
+═══════════════════════════════════════════════════════════════
+KONTROL LİSTESİ
+═══════════════════════════════════════════════════════════════
+
+✅ Tüm dosyalar commit edildi
+✅ GitHub'a push edildi
+✅ Model dosyası repository'de
+✅ Streamlit Cloud'da deploy edildi
+✅ Deployment linki çalışıyor
+✅ README.md güncel
+✅ Proje teslim formu dolduruldu
+
+═══════════════════════════════════════════════════════════════
+

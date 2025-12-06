@@ -1,0 +1,41 @@
+# Data Processing
+pandas>=2.2.0
+numpy>=1.26.0
+scipy>=1.11.0
+
+# Machine Learning
+scikit-learn>=1.3.0
+xgboost>=2.0.0
+lightgbm>=4.0.0
+# catboost>=1.2.0  # Optional - requires Ninja build tool and may not work with Python 3.14
+imbalanced-learn>=0.11.0
+
+# Visualization
+matplotlib>=3.8.0
+seaborn>=0.13.0
+plotly>=5.18.0
+
+# Model Interpretation (optional - requires Python <3.14)
+# shap>=0.44.0  # Uncomment if using Python 3.11-3.13
+
+# Jupyter
+jupyter==1.0.0
+ipykernel==6.27.1
+notebook==7.0.6
+
+# API & Deployment
+fastapi>=0.109.0
+uvicorn>=0.27.0
+streamlit>=1.31.0
+pydantic>=2.5.0
+
+# Utilities
+python-dotenv==1.0.0
+pyyaml==6.0.1
+joblib==1.3.2
+kaggle==1.5.16
+
+# Testing
+pytest==7.4.4
+pytest-cov==4.1.0
+

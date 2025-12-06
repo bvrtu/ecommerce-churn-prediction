@@ -1,0 +1,108 @@
+═══════════════════════════════════════════════════════════════
+GERÇEK KAGGLE DATASET İNDİRME KILAVUZU
+═══════════════════════════════════════════════════════════════
+
+SEÇENEK 1: MANUEL İNDİRME (ÖNERİLEN - DAHA KOLAY)
+───────────────────────────────────────────────────────────────
+
+ADIM 1: Kaggle'da Dataset Bulun
+───────────────────────────────────────────────────────────────
+1. Tarayıcınızda şu adrese gidin:
+   https://www.kaggle.com/datasets
+
+2. Arama kutusuna şunlardan birini yazın:
+   - "ecommerce customer churn"
+   - "customer churn prediction"
+   - "online retail churn"
+
+3. Popüler dataset önerileri:
+   ✅ "E-Commerce Customer Churn" (aravindh1/ecommerce-customer-churn)
+   ✅ "Customer Churn Prediction" (carl24/ecommerce-customer-churn-prediction)
+   ✅ "Telco Customer Churn" (blastchar/telco-customer-churn) - e-commerce'e uyarlanabilir
+
+ADIM 2: Dataset'i İndirin
+───────────────────────────────────────────────────────────────
+1. Beğendiğiniz dataset'e tıklayın
+2. Sağ üstte "Download" butonuna tıklayın
+3. ZIP dosyası indirilecek
+
+ADIM 3: Dataset'i Projeye Yerleştirin
+───────────────────────────────────────────────────────────────
+1. İndirdiğiniz ZIP dosyasını açın
+2. İçindeki CSV dosyalarını bulun
+3. CSV dosyalarını şu klasöre kopyalayın:
+   /Users/bartu/Desktop/ecommerce-churn-prediction/data/raw/
+
+4. Eğer train/test ayrımı varsa:
+   - train.csv → data/raw/train.csv
+   - test.csv → data/raw/test.csv
+   
+5. Eğer tek bir CSV varsa:
+   - data.csv veya churn.csv → data/raw/train.csv olarak adlandırın
+
+ADIM 4: Churn Kolonunu Kontrol Edin
+───────────────────────────────────────────────────────────────
+Dataset'inizde "churn" kolonu olmalı. Eğer farklı isimdeyse:
+- "Churn", "Exited", "is_churn" gibi isimler olabilir
+- Bu durumda data_loader.py otomatik olarak "churn" olarak değiştirecek
+- Veya manuel olarak CSV'de kolon adını "churn" yapabilirsiniz
+
+
+SEÇENEK 2: KAGGLE API İLE OTOMATİK İNDİRME
+───────────────────────────────────────────────────────────────
+
+ADIM 1: Kaggle API Token'ı Alın
+───────────────────────────────────────────────────────────────
+1. https://www.kaggle.com/ adresine gidin ve giriş yapın
+2. Profil ayarları: https://www.kaggle.com/settings
+3. "API" bölümüne scroll edin
+4. "Create New Token" butonuna tıklayın
+5. kaggle.json dosyası indirilecek
+
+ADIM 2: Token'ı Yerleştirin
+───────────────────────────────────────────────────────────────
+Terminal'de şu komutları çalıştırın:
+
+mkdir -p ~/.kaggle
+mv ~/Downloads/kaggle.json ~/.kaggle/
+chmod 600 ~/.kaggle/kaggle.json
+
+ADIM 3: Dataset'i İndirin
+───────────────────────────────────────────────────────────────
+python download_kaggle_dataset.py
+
+
+═══════════════════════════════════════════════════════════════
+DATASET İNDİRDİKTEN SONRA
+═══════════════════════════════════════════════════════════════
+
+1. Dataset'i kontrol edin:
+   python3 src/data_loader.py
+
+2. Eğer hata alırsanız, dataset'inizi kontrol edin:
+   - Churn kolonu var mı?
+   - En az 10,000 satır var mı?
+   - CSV formatında mı?
+
+3. Modeli eğitin:
+   python3 train_and_test.py
+
+
+═══════════════════════════════════════════════════════════════
+ÖNERİLEN DATASET'LER
+═══════════════════════════════════════════════════════════════
+
+1. "E-Commerce Customer Churn"
+   URL: https://www.kaggle.com/datasets/aravindh1/ecommerce-customer-churn
+   Özellikler: Gerçek e-ticaret verileri, churn kolonu mevcut
+
+2. "Customer Churn Prediction"
+   URL: https://www.kaggle.com/datasets/carl24/ecommerce-customer-churn-prediction
+   Özellikler: Kapsamlı feature set
+
+3. "Telco Customer Churn"
+   URL: https://www.kaggle.com/datasets/blastchar/telco-customer-churn
+   Özellikler: E-commerce'e uyarlanabilir, çok popüler
+
+═══════════════════════════════════════════════════════════════
+

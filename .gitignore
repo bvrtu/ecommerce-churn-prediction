@@ -1,0 +1,80 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+venv/
+env/
+ENV/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb_checkpoints/
+
+# Data
+data/raw/
+data/processed/
+*.csv
+*.parquet
+*.xlsx
+*.pkl
+*.joblib
+*.h5
+
+# Models (comment out for deployment - model needs to be in repo)
+# models/*.pkl
+# models/*.joblib
+# models/*.h5
+# models/*.pt
+
+# But keep large model files out of git history (use Git LFS if needed)
+# models/final_pipeline.pkl
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Environment variables
+.env
+.env.local
+
+# Kaggle
+.kaggle/
+
+# MLflow
+mlruns/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+

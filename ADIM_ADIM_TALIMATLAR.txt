@@ -1,0 +1,153 @@
+═══════════════════════════════════════════════════════════════
+E-COMMERCE CHURN PREDICTION - ADIM ADIM ÇALIŞTIRMA TALİMATLARI
+═══════════════════════════════════════════════════════════════
+
+ADIM 1: PROJE DİZİNİNE GİDİN
+───────────────────────────────────────────────────────────────
+cd /Users/bartu/Desktop/ecommerce-churn-prediction
+
+
+ADIM 2: VIRTUAL ENVIRONMENT OLUŞTURUN (İLK KEZ ÇALIŞTIRIYORSANIZ)
+───────────────────────────────────────────────────────────────
+python3 -m venv venv
+
+
+ADIM 3: VIRTUAL ENVIRONMENT'I AKTİF EDİN
+───────────────────────────────────────────────────────────────
+source venv/bin/activate
+
+(Başarılı olursa terminal'de (venv) yazısı görünecek)
+
+
+ADIM 4: BAĞIMLILIKLARI YÜKLEYİN
+───────────────────────────────────────────────────────────────
+pip install --upgrade pip
+pip install -r requirements.txt
+
+(Bu işlem birkaç dakika sürebilir)
+
+
+ADIM 5: DATASET OLUŞTURUN
+───────────────────────────────────────────────────────────────
+python3 src/data_loader.py
+
+(Bu komut sample dataset oluşturacak. Eğer Kaggle dataset'iniz varsa 
+data/raw/ klasörüne koyun ve train.csv olarak adlandırın)
+
+
+ADIM 6: MODELİ EĞİTİN VE TEST EDİN
+───────────────────────────────────────────────────────────────
+python3 train_and_test.py
+
+Bu komut:
+- Dataset'i yükler
+- Modeli eğitir
+- Test setinde değerlendirir
+- Sonuçları gösterir
+- Modeli models/final_pipeline.pkl olarak kaydeder
+
+
+ADIM 7: SONUÇLARI KONTROL EDİN
+───────────────────────────────────────────────────────────────
+Çıktıda şunları göreceksiniz:
+- Model performans metrikleri (Accuracy, Precision, Recall, F1, ROC-AUC)
+- Confusion Matrix
+- Business Impact Analizi
+- Model kayıt konumu
+
+
+═══════════════════════════════════════════════════════════════
+OPSİYONEL: UYGULAMALARI ÇALIŞTIRMA
+═══════════════════════════════════════════════════════════════
+
+STREAMLIT WEB UYGULAMASI:
+───────────────────────────────────────────────────────────────
+streamlit run streamlit_app.py
+
+Tarayıcıda http://localhost:8501 adresine gidin
+
+
+FASTAPI REST API:
+───────────────────────────────────────────────────────────────
+uvicorn app:app --reload
+
+API: http://localhost:8000
+Dokümantasyon: http://localhost:8000/docs
+
+
+JUPYTER NOTEBOOK'LAR:
+───────────────────────────────────────────────────────────────
+jupyter notebook notebooks/
+
+Sırayla çalıştırın:
+1. 01_EDA.ipynb
+2. 02_Baseline.ipynb
+3. 03_Feature_Engineering.ipynb
+4. 04_Model_Optimization.ipynb
+5. 05_Model_Evaluation.ipynb
+6. 06_Final_Pipeline.ipynb
+
+
+═══════════════════════════════════════════════════════════════
+HIZLI ÇALIŞTIRMA (TÜM ADIMLAR BİRDEN)
+═══════════════════════════════════════════════════════════════
+
+./RUN_PROJECT.sh
+
+veya
+
+bash RUN_PROJECT.sh
+
+
+═══════════════════════════════════════════════════════════════
+SORUN GİDERME
+═══════════════════════════════════════════════════════════════
+
+PROBLEM: "ModuleNotFoundError: No module named 'pandas'"
+ÇÖZÜM: Virtual environment aktif değil veya bağımlılıklar yüklenmemiş
+- source venv/bin/activate
+- pip install -r requirements.txt
+
+PROBLEM: "Dataset not found"
+ÇÖZÜM: Dataset oluşturun
+- python3 src/data_loader.py
+
+PROBLEM: "Churn column not found"
+ÇÖZÜM: Dataset'inizde churn kolonu olmalı veya data_loader.py'yi güncelleyin
+
+PROBLEM: Model eğitimi çok uzun sürüyor
+ÇÖZÜM: src/config.py'de XGBOOST_PARAMS['n_estimators'] değerini azaltın
+
+
+═══════════════════════════════════════════════════════════════
+BEKLENEN ÇIKTI ÖRNEĞİ
+═══════════════════════════════════════════════════════════════
+
+============================================================
+Starting Model Training
+============================================================
+Features: 20
+Samples: 15000
+Churn rate: 25.33%
+
+Train set: 12000 samples
+Test set: 3000 samples
+
+Training pipeline...
+Evaluating on test set...
+
+==================================================
+Model Performance Metrics
+==================================================
+ACCURACY      : 0.8833
+PRECISION     : 0.8521
+RECALL        : 0.8234
+F1            : 0.8375
+ROC_AUC       : 0.9215
+==================================================
+
+✅ Model saved to models/final_pipeline.pkl
+
+
+═══════════════════════════════════════════════════════════════
+

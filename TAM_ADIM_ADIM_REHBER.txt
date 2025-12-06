@@ -1,0 +1,178 @@
+═══════════════════════════════════════════════════════════════
+E-COMMERCE CHURN PREDICTION - TAM ADIM ADIM REHBER
+═══════════════════════════════════════════════════════════════
+
+ADIM 1: PROJE DİZİNİNE GİDİN
+───────────────────────────────────────────────────────────────
+cd /Users/bartu/Desktop/ecommerce-churn-prediction
+
+
+ADIM 2: VIRTUAL ENVIRONMENT'I AKTİF EDİN
+───────────────────────────────────────────────────────────────
+source venv/bin/activate
+
+(Başarılı olursa terminal'de (venv) yazısı görünecek)
+
+
+ADIM 3: DATASET'İN VARLIĞINI KONTROL EDİN
+───────────────────────────────────────────────────────────────
+ls -lh data/raw/train.csv
+
+Eğer dosya yoksa:
+- Kaggle'dan dataset indirin (WA_Fn-UseC_-Telco-Customer-Churn.csv)
+- data/raw/ klasörüne kopyalayın ve train.csv olarak adlandırın
+
+
+ADIM 4: DATASET'İ YÜKLEYİP KONTROL EDİN
+───────────────────────────────────────────────────────────────
+python3 -c "
+import sys
+sys.path.insert(0, '.')
+from src.data_loader import load_kaggle_ecommerce_churn
+from src.config import RAW_DATA_DIR
+
+df = load_kaggle_ecommerce_churn(RAW_DATA_DIR)
+print(f'✅ Dataset yüklendi: {df.shape}')
+print(f'Churn rate: {df[\"churn\"].mean():.2%}')
+"
+
+Bu komut dataset'in doğru yüklendiğini kontrol eder.
+
+
+ADIM 5: MODELİ EĞİTİN VE TEST EDİN
+───────────────────────────────────────────────────────────────
+python3 train_and_test.py
+
+Bu komut:
+- Dataset'i yükler
+- Modeli eğitir (XGBoost)
+- Test setinde değerlendirir
+- Performans metriklerini gösterir
+- Modeli models/final_pipeline.pkl olarak kaydeder
+
+Beklenen süre: 1-3 dakika
+
+
+ADIM 6: SONUÇLARI KONTROL EDİN
+───────────────────────────────────────────────────────────────
+Çıktıda şunları göreceksiniz:
+- Accuracy, Precision, Recall, F1-Score, ROC-AUC
+- Confusion Matrix
+- Business Impact Analizi
+- Model kayıt konumu
+
+
+═══════════════════════════════════════════════════════════════
+OPSİYONEL: UYGULAMALARI ÇALIŞTIRMA
+═══════════════════════════════════════════════════════════════
+
+ADIM 7A: STREAMLIT WEB UYGULAMASI (ÖNERİLEN)
+───────────────────────────────────────────────────────────────
+streamlit run streamlit_app.py
+
+Tarayıcıda otomatik olarak http://localhost:8501 açılacak
+
+Özellikler:
+- Single Customer Prediction: Tek müşteri için churn tahmini
+- Batch Prediction: Toplu müşteri analizi
+- Model Info: Model detayları
+
+
+ADIM 7B: FASTAPI REST API
+───────────────────────────────────────────────────────────────
+uvicorn app:app --reload
+
+API Endpoints:
+- http://localhost:8000 - Ana sayfa
+- http://localhost:8000/docs - API dokümantasyonu
+- http://localhost:8000/predict - Tahmin endpoint'i
+
+
+ADIM 7C: JUPYTER NOTEBOOK'LAR
+───────────────────────────────────────────────────────────────
+jupyter notebook notebooks/
+
+Sırayla çalıştırın:
+1. 01_EDA.ipynb - Keşifsel veri analizi
+2. 02_Baseline.ipynb - Baseline model
+3. 03_Feature_Engineering.ipynb - Feature engineering
+4. 04_Model_Optimization.ipynb - Hiperparametre optimizasyonu
+5. 05_Model_Evaluation.ipynb - Model değerlendirme
+6. 06_Final_Pipeline.ipynb - Final pipeline
+
+
+═══════════════════════════════════════════════════════════════
+HIZLI KOMUTLAR (KOPYALA-YAPIŞTIR)
+═══════════════════════════════════════════════════════════════
+
+# 1. Proje dizinine git
+cd /Users/bartu/Desktop/ecommerce-churn-prediction
+
+# 2. Virtual environment aktif et
+source venv/bin/activate
+
+# 3. Dataset kontrolü
+python3 -c "import sys; sys.path.insert(0, '.'); from src.data_loader import load_kaggle_ecommerce_churn; from src.config import RAW_DATA_DIR; df = load_kaggle_ecommerce_churn(RAW_DATA_DIR); print(f'Dataset: {df.shape}, Churn: {df[\"churn\"].mean():.2%}')"
+
+# 4. Modeli eğit
+python3 train_and_test.py
+
+# 5. Streamlit uygulaması (yeni terminal'de)
+streamlit run streamlit_app.py
+
+
+═══════════════════════════════════════════════════════════════
+SORUN GİDERME
+═══════════════════════════════════════════════════════════════
+
+PROBLEM: "ModuleNotFoundError: No module named 'src'"
+ÇÖZÜM: Proje root dizininde olduğunuzdan emin olun
+- cd /Users/bartu/Desktop/ecommerce-churn-prediction
+
+PROBLEM: "XGBoost Library could not be loaded"
+ÇÖZÜM: OpenMP kurulumu gerekli
+- brew install libomp
+- pip uninstall xgboost && pip install xgboost
+
+PROBLEM: "Dataset not found"
+ÇÖZÜM: Dataset'i kontrol edin
+- ls -lh data/raw/train.csv
+- Eğer yoksa Kaggle'dan indirip kopyalayın
+
+PROBLEM: "Churn column not found"
+ÇÖZÜM: Dataset'te Churn kolonu olmalı
+- Dataset'inizde "Churn" veya "churn" kolonu olduğundan emin olun
+
+
+═══════════════════════════════════════════════════════════════
+BEKLENEN ÇIKTI ÖRNEĞİ
+═══════════════════════════════════════════════════════════════
+
+============================================================
+Starting Model Training
+============================================================
+Features: 20
+Samples: 7043
+Churn rate: 26.54%
+
+Train set: 5634 samples
+Test set: 1409 samples
+
+Training pipeline...
+Evaluating on test set...
+
+==================================================
+Model Performance Metrics
+==================================================
+ACCURACY       : 0.7928
+PRECISION      : 0.6694
+RECALL         : 0.4332
+F1             : 0.5260
+ROC_AUC        : 0.8279
+==================================================
+
+✅ Model saved to models/final_pipeline.pkl
+
+
+═══════════════════════════════════════════════════════════════
+
