@@ -21,7 +21,25 @@ class ChurnPredictor:
     def __init__(self, model_path: Path = None):
         """Initialize the predictor with a trained model."""
         if model_path is None:
-            model_path = MODELS_DIR / "final_pipeline.pkl"
+            # Try multiple possible paths for deployment
+            possible_paths = [
+                MODELS_DIR / "final_pipeline.pkl",
+                Path(__file__).parent.parent / "models" / "final_pipeline.pkl",
+                Path(__file__).parent.parent.parent / "models" / "final_pipeline.pkl",
+                Path("models") / "final_pipeline.pkl",
+                Path("final_pipeline.pkl"),
+            ]
+            
+            model_path = None
+            for path in possible_paths:
+                if path.exists():
+                    model_path = path
+                    break
+            
+            if model_path is None:
+                raise FileNotFoundError(
+                    f"Model file not found. Tried: {[str(p) for p in possible_paths]}"
+                )
         
         self.pipeline = ChurnPipeline()
         self.pipeline.load(model_path)
